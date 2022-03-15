@@ -1,0 +1,8 @@
+## model
+ckpt/
+
+# word embedding file, e.g. glove, word2vec etc.
+glove.*
+
+# pycache
+__pycache__
