@@ -84,7 +84,7 @@ def main(args):
         epoch_weight_ckpt = args.ckpt_dir / f"{model.MODEL_TYPE()}_best_weight.ckpt" # where to save epoch weight file => training recovery
         
         epoch_t_start = time.time() # save start time for a new epoch
-        epoch_pbar.desc = f"Epoch: {epoch}, BEST_ACC({best_avg_acc:.2%}, last_acc({avg_batch_acc}))"
+        epoch_pbar.desc = f"Epoch: {epoch}, BEST_ACC({best_avg_acc:.2%})"
         
         # # TODO: Training loop - iterate over train dataloader and update model weights
         
@@ -186,16 +186,16 @@ def main(args):
             
             # DO: calculate the "average loss" in train/eval set, and add to logger
             avg_batch_loss = batch_cum_loss/num_batches
-            print(type(avg_batch_loss), type(Epoch_loss_logger[TAG]))
+            #print(type(avg_batch_loss), type(Epoch_loss_logger[TAG]))
             Epoch_loss_logger[TAG].append(avg_batch_loss)
             
             # DO: calculate the "average accuracy" in train/eval set, and add to logger
             avg_batch_acc = batch_cum_acc/num_batches
-            print(type(avg_batch_loss), type(Epoch_loss_logger[TAG]))
+            #print(type(avg_batch_loss), type(Epoch_loss_logger[TAG]))
             Epoch_acc_logger[TAG].append(avg_batch_acc)
             
             # DO: update Info to CMD
-            print(f"Epoch_loss_logger: {TAG}_len = {len(Epoch_loss_logger[TAG])}\n{Epoch_loss_logger.items()}")
+            print(f"Epoch_loss_logger: train_len = {len(Epoch_loss_logger['train'])}, eval_len = {len(Epoch_loss_logger['eval'])}")
             tqdm.write("="*100)
             tqdm.write("") # # write empty new_line
             tqdm.write(f"{TAG}: number of batches = {num_batches}, avg_batch_acc = {avg_batch_acc:.2%}, avg_batch_loss = {avg_batch_loss}")
