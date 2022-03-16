@@ -6,3 +6,6 @@ glove.*
 
 # pycache
 __pycache__
+
+# image
+*.png

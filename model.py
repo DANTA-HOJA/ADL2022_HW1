@@ -60,7 +60,7 @@ class IntentCls_RNN(torch.nn.Module):
         
         # DO: select last layer of total layers
         # total layer = (bidirectional+num_layers), select the last layer
-        output = output[-1,:,:] 
+        output = output[-3,:,:] 
         #print(f"after select, output.shape = {output.shape}")
         # print(output)
         
@@ -78,7 +78,7 @@ class IntentCls_RNN(torch.nn.Module):
         
         return hidden
     
-    def MODEL_TYPE() -> str: # Retrun "Model Architecture" => Use to name .ckpt file
+    def MODEL_TYPE(self) -> str: # Retrun "Model Architecture" => Use to name .ckpt file
         return "RNN"
 
 class IntentCls_LSTM(torch.nn.Module):
