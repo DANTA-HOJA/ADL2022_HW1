@@ -27,7 +27,7 @@ model = IntentCls_RNN(embeddings=embeddings, hidden_size=512, num_layers=2,
                         num_classes=150, device=device) # init model
 
 # DO: recovery model and logger
-model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(100_epoch_compelet).ckpt" # .ckpt file path
+model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(100_epoch_complete).ckpt" # .ckpt file path
 checkpoint = torch.load(model_path) # load .ckpt file
 
 # load model parameters

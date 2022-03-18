@@ -11,3 +11,7 @@ after rnn, h_n.shape = torch.Size([4, 256, 512])
 after fc, output.shape = torch.Size([4, 256, 150])
 after select, output.shape = torch.Size([256, 150])
 after softmax, output.shape = torch.Size([256, 150])
+
+
+# RUN TEST
+python3 test_intent.py --test_file ./data/intent/test.json 
