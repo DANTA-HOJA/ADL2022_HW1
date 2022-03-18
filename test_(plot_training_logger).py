@@ -75,7 +75,7 @@ def parse_args() -> Namespace:
         "--model_path",
         type=Path,
         help="Path to the test file.",
-        required=True
+        default="./ckpt"
     )
     parser.add_argument(
         "--device", type=torch.device, help="cpu, cuda, cuda:{device_num}, e.g.cuda:0", default="cuda:1"
