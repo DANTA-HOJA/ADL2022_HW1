@@ -100,8 +100,8 @@ class IntentClsDataset_TESTver(Dataset):
         # id processing
         id_in_str = self.data[index]["id"]
         id_in_int = int(id_in_str.split("-")[1])
-        print(f"id_in_str = {id_in_str}, type(id_in_str) = {type(id_in_str)}")
-        print(f"id_in_int = {id_in_int}, type(id_in_int) = {type(id_in_int)}")
+        # print(f"id_in_str = {id_in_str}, type(id_in_str) = {type(id_in_str)}")
+        # print(f"id_in_int = {id_in_int}, type(id_in_int) = {type(id_in_int)}")
         return sentence_in_index, id_in_int
 
     @property
