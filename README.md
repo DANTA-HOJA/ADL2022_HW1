@@ -20,4 +20,13 @@ after softmax, output.shape = torch.Size([256, 150])
 # RUN TEST
     python3 test_intent.py --test_file ./data/intent/test.json
 
-> output_file (default setting) : location = ".", file_name="pred_intent.csv"
+output_file (default setting) : ___[location = "."],　[file_name="pred_intent.csv"]___
+
+
+# Colab: Using "glove.840B.300d"
+1.　Download：
+
+    !wget http://nlp.stanford.edu/data/glove.840B.300d.zip
+2.　Unzip：
+
+    unzip glove.840B.300d.zip

@@ -201,7 +201,13 @@ def main(args):
                             'eval_acc' : Epoch_acc_logger['eval'],
                             'best_avg_acc': best_avg_acc,
                             # Info: epoch, total_epoch(manual)
-                            'epoch': [epoch+1, args.num_epoch]
+                            'epoch': [epoch+1, args.num_epoch],
+                            'model_para':{
+                                'hidden_size' : args.hidden_size,
+                                'num_layers' : args.num_layers,
+                                'dropout' : args.dropout,
+                                'bidirectional' : args.bidirectional
+                                }
                             }, best_weight_ckpt)
             
             # CHECK_PT: all batches process complete
