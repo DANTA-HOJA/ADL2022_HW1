@@ -13,5 +13,11 @@ after select, output.shape = torch.Size([256, 150])
 after softmax, output.shape = torch.Size([256, 150])
 
 
+# RUN TRAIN
+
+
+
 # RUN TEST
-python3 test_intent.py --test_file ./data/intent/test.json 
+    python3 test_intent.py --test_file ./data/intent/test.json
+
+> output_file (default setting) : location = ".", file_name="pred_intent.csv"
