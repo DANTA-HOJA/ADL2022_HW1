@@ -236,6 +236,13 @@ def main(args):
         # input(f"\n=> one epoch process complete, press Enter to continue")
     # CHECK_PT: all epochs process complete
     # input(f"\n=> all epochs process complete, press Enter to continue")
+    
+    # DO: clean GPU cache
+    if args.device != "cpu":
+        torch.cuda.empty_cache()
+        print("torch.cuda.empty_cache()")
+    # CHECK_PT: release GPU cache complete
+    input(f"\n=> release GPU cache complete, press Enter to continue")
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
