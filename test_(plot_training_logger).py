@@ -40,7 +40,7 @@ def main(args):
                             dropout= 0.1, bidirectional= True,
                             num_classes=150, device=device) # init model
     model = model.to(device) # send model to device
-    print(model)
+    print(f"{model}\n")
 
     # DO: recovery model and logger
     model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(100_epoch_complete).ckpt" # .ckpt file path
@@ -68,6 +68,13 @@ def main(args):
     plt.legend(['train', 'eval'])
     plt.title('accuracy')
     plt.savefig("epoch_Acc_logger.png")
+    
+    # DO: clean GPU cache
+    if args.device != "cpu":
+        torch.cuda.empty_cache()
+        print("torch.cuda.empty_cache()")
+    # CHECK_PT: release GPU cache complete
+    input(f"\n=> release GPU cache complete, press Enter to continue")
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
