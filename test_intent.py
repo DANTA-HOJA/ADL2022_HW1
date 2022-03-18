@@ -80,14 +80,14 @@ def main(args):
 
     # DO: init model, loss_function
     loss_fn = nn.CrossEntropyLoss()
-    model = IntentCls_RNN(embeddings=embeddings, hidden_size=args.hidden_size, num_layers=args.num_layers,
+    model = IntentCls_LSTM(embeddings=embeddings, hidden_size=args.hidden_size, num_layers=args.num_layers,
                           dropout= args.dropout, bidirectional= args.bidirectional,
                           num_classes=test_set.num_classes, device=device) # init model
     model = model.to(device) # send model to device
     print(model)  
     
     # DO: load model parameters
-    model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(100_epoch_complete).ckpt" # .ckpt file path
+    model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(15_epoch_complete).ckpt" # .ckpt file path
     checkpoint = torch.load(model_path) # load .ckpt file
     model.load_state_dict(checkpoint['model_state_dict'])
 

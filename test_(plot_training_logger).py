@@ -36,14 +36,14 @@ def main(args):
 
     # initialize same model structure store in ckpt file
     # because we only save model parameters (using "model.state_dict()") not whole "model info(include "model structure")"
-    model = IntentCls_RNN(embeddings=embeddings, hidden_size=512, num_layers=2,
+    model = IntentCls_LSTM(embeddings=embeddings, hidden_size=512, num_layers=2,
                             dropout= 0.1, bidirectional= True,
                             num_classes=150, device=device) # init model
     model = model.to(device) # send model to device
     print(f"{model}\n")
 
     # DO: recovery model and logger
-    model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(100_epoch_complete).ckpt" # .ckpt file path
+    model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(15_epoch_complete).ckpt" # .ckpt file path
     checkpoint = torch.load(model_path) # load .ckpt file
 
     # load model parameters
