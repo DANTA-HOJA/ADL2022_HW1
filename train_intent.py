@@ -206,7 +206,8 @@ def main(args):
                                 'hidden_size' : args.hidden_size,
                                 'num_layers' : args.num_layers,
                                 'dropout' : args.dropout,
-                                'bidirectional' : args.bidirectional
+                                'bidirectional' : args.bidirectional,
+                                'num_classes' : train_set.num_classes
                                 }
                             }, best_weight_ckpt)
             

@@ -30,38 +30,45 @@ def main(args):
     # CHECK_PT: device setting complete
     input("\n=> device setting complete, press Enter to continue") 
 
-    # DO: load embedding
+    # DO: recovery model and logger
+    # 1. load full stored file = model+training_info
+    model_path = f"./ckpt/intent/LSTM_best_weight.ckpt" # .ckpt file path
+    training_info = torch.load(model_path) # load .ckpt file
+    # 2. load embedding
     embeddings = torch.load("./cache/intent/embeddings.pt")
     embeddings = embeddings.to(device)
-
-    # initialize same model structure store in ckpt file
-    # because we only save model parameters (using "model.state_dict()") not whole "model info(include "model structure")"
-    model = IntentCls_LSTM(embeddings=embeddings, hidden_size=512, num_layers=2,
-                            dropout= 0.1, bidirectional= True,
-                            num_classes=150, device=device) # init model
+    # 3. load "model parameters"
+    hidden_size = training_info["model_para"]["hidden_size"]
+    num_layers = training_info["model_para"]["num_layers"]
+    dropout = training_info["model_para"]["dropout"]
+    bidirectional = training_info["model_para"]["bidirectional"]
+    num_classes = training_info["model_para"]["num_classes"]
+    # 4. initialize same model structure store in ckpt file
+    # ==> because we only save model gradient (using "model.state_dict()") not whole "model info(include "model structure")"
+    model = IntentCls_LSTM(embeddings=embeddings, hidden_size=hidden_size, num_layers=num_layers,
+                            dropout= dropout, bidirectional= bidirectional,
+                            num_classes=num_classes, device=device) # init model
     model = model.to(device) # send model to device
-    print(f"{model}\n")
+    print(f"{model}\n") 
+    # 5. load performance metrics and loggers
+    model.load_state_dict(training_info['model_state_dict'])
+    Epoch_loss_logger = {'train': training_info['trian_loss'], 'eval': training_info['eval_loss']}
+    Epoch_acc_logger = {'train': training_info['trian_acc'], 'eval': training_info['eval_acc']}
 
-    # DO: recovery model and logger
-    model_path = f"./ckpt/intent/{model.MODEL_TYPE()}_best_weight_(15_epoch_complete).ckpt" # .ckpt file path
-    checkpoint = torch.load(model_path) # load .ckpt file
+    # DO: show best information
+    print(f"best_result @ epoch {training_info['epoch'][0]} ({training_info['epoch'][0]} in 1:{training_info['epoch'][1]}):")
+    print(f"best_avg_acc = {training_info['best_avg_acc']:.2%}")
+    print(f"best_avg_loss = {training_info['best_avg_loss']}")
 
-    # load model parameters
-    model.load_state_dict(checkpoint['model_state_dict'])
-    Epoch_loss_logger = {'train': checkpoint['trian_loss'], 'eval': checkpoint['eval_loss']}
-    Epoch_acc_logger = {'train': checkpoint['trian_acc'], 'eval': checkpoint['eval_acc']}
-
-    print(f"best_result @ epoch {checkpoint['epoch'][0]} ({checkpoint['epoch'][0]} in 1:{checkpoint['epoch'][1]}):")
-    print(f"best_avg_acc = {checkpoint['best_avg_acc']:.2%}")
-    print(f"best_avg_loss = {checkpoint['best_avg_loss']}")
-
+    # DO: draw and save graph
+    # 1. loss graph
     plt.figure("Epoch_loss")
     plt.plot(Epoch_loss_logger['train'])
     plt.plot(Epoch_loss_logger['eval'])
     plt.legend(['train', 'eval'])
     plt.title('loss')
     plt.savefig("epoch_Loss_logger.png")
-
+    # 2. accuracy graph
     plt.figure("Epoch_acc")
     plt.plot(Epoch_acc_logger['train'])
     plt.plot(Epoch_acc_logger['eval'])
