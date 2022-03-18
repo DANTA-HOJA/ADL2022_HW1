@@ -36,8 +36,8 @@ def main(args):
     train_set = IntentClsDataset(data_paths["train"], vocab, intent2idx, args.max_len)
     eval_set = IntentClsDataset(data_paths["eval"], vocab, intent2idx, args.max_len)
     print(f"\nData in train_set = {train_set.__len__()}, Data in eval_set = {eval_set.__len__()}\n")
-    # CHECK_PT: 
-    # input("\n=> press Enter to continue")
+    # CHECK_PT: train/eval set load complete
+    # input("\n=> train/eval set load complete, press Enter to continue")
     
     # DO: crecate DataLoader for train / dev datasets
     dataloaders = {
@@ -45,8 +45,8 @@ def main(args):
         'eval': DataLoader(eval_set, batch_size=args.batch_size, shuffle=True, num_workers=4)
     }
     print(f"dataloaders = {dataloaders}\n")
-    # CHECK_PT: 
-    # input("\n=> press Enter to continue") 
+    # CHECK_PT: init dataLoader for train/eval set complete
+    # input("\n=> init dataLoader for train/eval set complete, press Enter to continue") 
     
     # DO: check if CUDA is available
     if args.device == "cpu":
@@ -72,15 +72,15 @@ def main(args):
     if args.device != "cpu":
         torch.cuda.empty_cache() 
         print("torch.cuda.empty_cache()")
-    # CHECK_PT: 
-    input("\n=> press Enter to continue") 
+    # CHECK_PT: device setting complete
+    input("\n=> device setting complete, press Enter to continue") 
     
     # DO: load embedding
     embeddings = torch.load(args.cache_dir / "embeddings.pt")
     embeddings = embeddings.to(device)
     
     # DO: init model
-    model = IntentCls_RNN(embeddings=embeddings, hidden_size=args.hidden_size, num_layers=args.num_layers,
+    model = IntentCls_LSTM(embeddings=embeddings, hidden_size=args.hidden_size, num_layers=args.num_layers,
                           dropout= args.dropout, bidirectional= args.bidirectional,
                           num_classes=train_set.num_classes, device=device) # init model
     model = model.to(device) # send model to device
@@ -160,9 +160,9 @@ def main(args):
                     # DO: update batch_Info to CMD
                     tqdm.write(f"{TAG}: batch_index = {batch_index}, metrics : batch_accuracy = {batch_acc:.2%} ({correct}/{total}), batch_loss = {batch_loss}")
                 
+                # CHECK_PT: one batch process complete
+                # input(f"\n=> one {TAG} batch process complete, batch_index = {batch_index}, press Enter to continue")
                 num_batches += 1
-                # CHECK_PT:
-                # input(f"\n=> end of 'one' {TAG} batch, press Enter to continue")
             # end : batch
             os.system("clear")
             
@@ -181,8 +181,6 @@ def main(args):
             tqdm.write("="*100)
             tqdm.write("") # # write empty new_line
             tqdm.write(f"{TAG}: number of batches = {num_batches}, avg_batch_acc = {avg_batch_acc:.2%}, avg_batch_loss = {avg_batch_loss}")
-            # CHECK_PT: 
-            # input(f"\n=> end of 'all' {TAG} batches, press Enter to continue")
 
             # DO: save the best model info
             if TAG == 'eval' and avg_batch_loss < best_avg_loss and avg_batch_acc > best_avg_acc:
@@ -205,6 +203,9 @@ def main(args):
                             # Info: epoch, total_epoch(manual)
                             'epoch': [epoch+1, args.num_epoch]
                             }, best_weight_ckpt)
+            
+            # CHECK_PT: all batches process complete
+            # input(f"\n=> all {TAG} batches process complete, press Enter to continue")
         # end : epoch
         
         # DO: calculate the consuming time of this epoch
@@ -231,10 +232,10 @@ def main(args):
         plt.legend(['train', 'eval'])
         plt.savefig("epoch_Acc_logger.png")
         
-        # CHECK_PT: 
-        # input(f"\n=> end of 'one' epoch, press Enter to continue")
-    # CHECK_PT: 
-    # input(f"\n=> end of 'all' epochs, press Enter to continue")
+        # CHECK_PT: one epoch process complete
+        # input(f"\n=> one epoch process complete, press Enter to continue")
+    # CHECK_PT: all epochs process complete
+    # input(f"\n=> all epochs process complete, press Enter to continue")
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()

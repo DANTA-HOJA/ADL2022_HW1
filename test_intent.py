@@ -41,8 +41,8 @@ def main(args):
     test_path = args.test_file
     test_set = IntentClsDataset_TESTver(test_path, vocab, intent2idx, args.max_len)
     print(f"\nData in test_set = {test_set.__len__()}")
-    print(f"\nData in test_set = {test_set.__getitem__(22)}")
-    # CHECK_PT: test_load complete
+    # print(f"\nData in test_set = {test_set.__getitem__(22)}")
+    # CHECK_PT: test_set load complete
     input("\n=> test_load complete, press Enter to continue")
     
     # DO: crecate DataLoader for test dataset
