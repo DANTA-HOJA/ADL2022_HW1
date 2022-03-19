@@ -202,6 +202,7 @@ def main(args):
                             'best_avg_acc': best_avg_acc,
                             # Info: epoch, total_epoch(manual)
                             'epoch': [epoch+1, args.num_epoch],
+                            'batch_size': args.batch_size,
                             'model_para':{
                                 'hidden_size' : args.hidden_size,
                                 'num_layers' : args.num_layers,
