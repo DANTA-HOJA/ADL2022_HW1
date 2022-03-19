@@ -11,4 +11,4 @@ __pycache__
 *.png
 
 # csv_dir
-pred_intent_csv
+pred_intent_csv/
