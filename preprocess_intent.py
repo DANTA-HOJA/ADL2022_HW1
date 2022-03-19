@@ -26,10 +26,10 @@ logging.basicConfig(
 
 def build_vocab(words: Counter, vocab_size: int, output_dir: Path, glove_path: Path) -> None:
     common_words = {w for w, _ in words.most_common(vocab_size)}
-    #print(f"type(common_words) = {type(common_words)}, \
-    #      len(common_words) = {len(common_words)}, common_words.element = \n{common_words}") ## -----------------------------------------------------------------testing：印出來了解內容
-    #input() ## -----------------------------------------------------------------testing：模擬system("pause")
-    #system("clear") ## -----------------------------------------------------------------testing：system("clear")
+    # print(f"type(common_words) = {type(common_words)}, \
+        # len(common_words) = {len(common_words)}, common_words.element = \n{common_words}") ## -----------------------------------------------------------------testing：印出來了解內容
+    # input() ## -----------------------------------------------------------------testing：模擬system("pause")
+    # system("clear") ## -----------------------------------------------------------------testing：system("clear")
     
     vocab = Vocab(common_words)
     vocab_path = output_dir / "vocab.pkl"
@@ -48,21 +48,21 @@ def build_vocab(words: Counter, vocab_size: int, output_dir: Path, glove_path: P
         # otherwise ignore the header
 
         for i, line in tqdm(enumerate(fp)):
-            #print(f"i = {i}, type(line) = {type(line)}, len(line) = {len(line)}, line = \n{line}")
-            #input() ## -----------------------------------------------------------------testing：模擬system("pause")
+            # print(f"i = {i}, type(line) = {type(line)}, len(line) = {len(line)}, line = \n{line}")
+            # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")
 
             cols = line.rstrip().split(" ")
-            #print(f"\n\ntype(glove) = {type(cols)}, len(glove) = {len(cols)}, glove = \n{cols}") ## -----------------------------------------------------------------testing：印出來了解內容
-            #input() ## -----------------------------------------------------------------testing：模擬system("pause")\
+            # print(f"\n\ntype(glove) = {type(cols)}, len(glove) = {len(cols)}, glove = \n{cols}") ## -----------------------------------------------------------------testing：印出來了解內容
+            # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")\
 
             word = cols[0]
-            #print(f"\n\ntype(word) = {type(word)}, len(word) = {len(word)}, word = {word}") ## -----------------------------------------------------------------testing：印出來了解內容
-            #input() ## -----------------------------------------------------------------testing：模擬system("pause")\
+            # print(f"\n\ntype(word) = {type(word)}, len(word) = {len(word)}, word = {word}") ## -----------------------------------------------------------------testing：印出來了解內容
+            # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")\
 
             vector = [float(v) for v in cols[1:]]
-            #print(f"type(vector) = {type(vector)}, len(vector) = {len(vector)}, vector = \n{vector}") ## -----------------------------------------------------------------testing：印出來了解內容
-            #input() ## -----------------------------------------------------------------testing：模擬system("pause")\
-            #system("clear") ## -----------------------------------------------------------------testing：system("clear")
+            # print(f"type(vector) = {type(vector)}, len(vector) = {len(vector)}, vector = \n{vector}") ## -----------------------------------------------------------------testing：印出來了解內容
+            # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")\
+            # system("clear") ## -----------------------------------------------------------------testing：system("clear")
 
             # skip word not in words if words are provided
             if word not in common_words: # word => 所有在 glove 裡的所有字, common_words => 蒐集"train.json"及"eval.json"
@@ -104,10 +104,10 @@ def main(args):
         dataset_path = args.data_dir / f"{split}.json"
         dataset = json.loads(dataset_path.read_text())
         logging.info(f"Dataset loaded at {str(dataset_path.resolve())}")
-        print(f"type(dataset) = {type(dataset)}\n") ## -----------------------------------------------------------------testing：印出來了解內容
-        input() ## -----------------------------------------------------------------testing：模擬system("pause")
-        print(f"dataset = \n{dataset[:1]}\n\n")
-        input() ## -----------------------------------------------------------------testing：模擬system("pause")
+        # print(f"type(dataset) = {type(dataset)}\n") ## -----------------------------------------------------------------testing：印出來了解內容
+        # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")
+        # print(f"dataset = \n{dataset[:1]}\n\n")
+        # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")
         
         intents.update({instance["intent"] for instance in dataset}) #update()：添加新的元素或集合到當前集合中，如果添加的元素在集合中已存在，
                                                                      #          則該元素只會出現一次，重複的會忽略。
@@ -123,13 +123,13 @@ def main(args):
         print(f"\n\n\nlen(words) = {len(words)}\nwords = {words.elements}") ## -----------------------------------------------------------------testing：印出來了解內容
         print(f"\n\n\nlen(words2) = {len(words2)}\nwords2 = {words2.elements}") ## -----------------------------------------------------------------testing：印出來了解內容
         logging.info(f"words == words2 ?? => {words==words2}") ## -----------------------------------------------------------------testing：印出來了解內容
-        input()
+        # input("press Enter to continue")
         """
     # 收錄完 "train.json", "eval.json" 後的結果，in this case => total words = 6489, total intents = 150（0-149）
-    print(f"total len(words) = {len(words)}\ntotal words = {words.elements}") ## -----------------------------------------------------------------testing：印出來了解內容
-    print(f"\n\n\nlen(intents) = {len(intents)}\nintents = {intents}") ## -----------------------------------------------------------------testing：印出來了解內容
-    input() ## -----------------------------------------------------------------testing：模擬system("pause")
-    system("clear") ## -----------------------------------------------------------------testing：system("clear")
+    # print(f"total len(words) = {len(words)}\ntotal words = {words.elements}") ## -----------------------------------------------------------------testing：印出來了解內容
+    # print(f"\n\n\nlen(intents) = {len(intents)}\nintents = {intents}") ## -----------------------------------------------------------------testing：印出來了解內容
+    # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")
+    # system("clear") ## -----------------------------------------------------------------testing：system("clear")
 
     
     intent2idx = {tag: i for i, tag in enumerate(intents)} # enumerate(Iterable[variable]) -> i（auto index）, element in  Iterable[variable]
@@ -138,7 +138,7 @@ def main(args):
     # 因此在將資料寫入時需要用到該函式。↓
     intent_tag_path.write_text(json.dumps(intent2idx, indent=2)) # indent：沒啥用，就是幫output的.json縮排，數字越大縮越多
     logging.info(f"Intent 2 index saved at {str(intent_tag_path.resolve())}")
-    input() ## -----------------------------------------------------------------testing：模擬system("pause")
+    # input("press Enter to continue") ## -----------------------------------------------------------------testing：模擬system("pause")
     
     build_vocab(words, args.vocab_size, args.output_dir, args.glove_path)
 
