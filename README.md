@@ -15,7 +15,7 @@ after softmax, output.shape = torch.Size([256, 150])
 
 # RUN TRAIN
 
-
+    python3 train_intent.py --batch_size #(default=256) --hidden_size #(default=512)
 
 # RUN TEST
     python3 test_intent.py --test_file ./data/intent/test.json
@@ -30,3 +30,9 @@ output_file (default setting) : ___[location = "."],　[file_name="pred_intent.c
 2.　Unzip：
 
     unzip glove.840B.300d.zip
+
+
+# TESTING
+    python3 train_intent.py --batch_size 64 --hidden_size 768
+    python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(h_size768)_(b_size64)_(5_epoch).ckpt"
+    python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(h_size768)_(b_size64)_(5_epoch).ckpt"

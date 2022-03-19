@@ -30,10 +30,10 @@ def main(args):
     # CHECK_PT: device setting complete
     input("\n=> device setting complete, press Enter to continue") 
 
-    # DO: recovery model and logger
+    # DO: recovery training info
     # 1. load full stored file = model+training_info
-    model_path = f"./ckpt/intent/LSTM_best_weight.ckpt" # .ckpt file path
-    training_info = torch.load(model_path) # load .ckpt file
+    ckpt_path = args.ckpt_path # .ckpt file path
+    training_info = torch.load(ckpt_path) # load .ckpt file
     # 2. load embedding
     embeddings = torch.load("./cache/intent/embeddings.pt")
     embeddings = embeddings.to(device)
@@ -48,10 +48,10 @@ def main(args):
     model = IntentCls_LSTM(embeddings=embeddings, hidden_size=hidden_size, num_layers=num_layers,
                             dropout= dropout, bidirectional= bidirectional,
                             num_classes=num_classes, device=device) # init model
+    model.load_state_dict(training_info['model_state_dict']) # load model 
     model = model.to(device) # send model to device
-    print(f"{model}\n") 
-    # 5. load performance metrics and loggers
-    model.load_state_dict(training_info['model_state_dict'])
+    print(f"{model}\n")
+    # 5. load loggers
     Epoch_loss_logger = {'train': training_info['trian_loss'], 'eval': training_info['eval_loss']}
     Epoch_acc_logger = {'train': training_info['trian_acc'], 'eval': training_info['eval_acc']}
 
@@ -86,10 +86,10 @@ def main(args):
 def parse_args() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument(
-        "--model_path",
+        "--ckpt_path",
         type=Path,
-        help="Path to the test file.",
-        default="./ckpt"
+        help="Path to model checkpoint. (file_extension = .ckpt)",
+        default="./ckpt/intent/LSTM_best_weight.ckpt"
     )
     parser.add_argument(
         "--device", type=torch.device, help="cpu, cuda, cuda:{device_num}, e.g.cuda:0", default="cuda:1"
