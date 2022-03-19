@@ -9,3 +9,6 @@ __pycache__
 
 # image
 *.png
+
+# csv_dir
+pred_intent_csv
