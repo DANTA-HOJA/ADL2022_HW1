@@ -87,7 +87,7 @@ def main(args):
     dropout = training_info["model_para"]["dropout"]
     bidirectional = training_info["model_para"]["bidirectional"]
     num_classes = training_info["model_para"]["num_classes"]
-    batch_size = training_info["batch_size"]
+    #batch_size = training_info["batch_size"]
     # 4. create same model structure store in .ckpt file
     # ==> because we only save model gradient (using "model.state_dict()") not whole "model info(include "model structure")"
     model = IntentCls_LSTM(embeddings=embeddings, hidden_size=hidden_size, num_layers=num_layers,
@@ -101,7 +101,7 @@ def main(args):
     print(f"dropout = {dropout}")
     print(f"bidirectional = {bidirectional}")
     print(f"num_classes = {num_classes}")
-    print(f"batch_size = {batch_size}")
+    #print(f"batch_size = {batch_size}")
     # CHECK_PT: recovery model structure complete
     input("\n=> recovery model structure complete, press Enter to continue")
     
