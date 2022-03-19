@@ -30,7 +30,7 @@ def main(args):
     # CHECK_PT: device setting complete
     input("\n=> device setting complete, press Enter to continue") 
 
-    # DO: recovery training info
+    # DO: recovery model and training info
     # 1. load full stored file = model+training_info
     ckpt_path = args.ckpt_path # .ckpt file path
     training_info = torch.load(ckpt_path) # load .ckpt file

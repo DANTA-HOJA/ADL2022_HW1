@@ -102,7 +102,7 @@ def main(args):
     print(f"bidirectional = {bidirectional}")
     print(f"num_classes = {num_classes}")
     print(f"batch_size = {batch_size}")
-    # CHECK_PT: load training info complete
+    # CHECK_PT: recovery model structure complete
     input("\n=> recovery model structure complete, press Enter to continue")
     
     # DO: add some parameters
