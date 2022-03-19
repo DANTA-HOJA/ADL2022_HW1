@@ -29,10 +29,10 @@ def main(args):
 
     intent2idx_json = args.cache_dir / "intent2idx.json"
     intent2idx: Dict[str, int] = json.loads(intent2idx_json.read_text())
-
+    
+    # DO: load train and evaluation data for training
     data_paths = {tag: args.data_dir / f"{tag}.json" for tag in TAG_DATASET}
-    # print(data_paths) # {'train': PosixPath('data/intent/train.json'), 'eval': PosixPath('data/intent/eval.json')}
-
+    # print(data_paths) # output => {'train': PosixPath('data/intent/train.json'), 'eval': PosixPath('data/intent/eval.json')}
     train_set = IntentClsDataset(data_paths["train"], vocab, intent2idx, args.max_len)
     eval_set = IntentClsDataset(data_paths["eval"], vocab, intent2idx, args.max_len)
     print(f"\nData in train_set = {train_set.__len__()}, Data in eval_set = {eval_set.__len__()}\n")
@@ -177,7 +177,7 @@ def main(args):
             Epoch_acc_logger[TAG].append(avg_batch_acc)
             
             # DO: update Info to CMD
-            print(f"Epoch_loss_logger: train_len = {len(Epoch_loss_logger['train'])}, eval_len = {len(Epoch_loss_logger['eval'])}")
+            tqdm.write(f"Epoch_loss_logger: train_len = {len(Epoch_loss_logger['train'])}, eval_len = {len(Epoch_loss_logger['eval'])}")
             tqdm.write("="*100)
             tqdm.write("") # # write empty new_line
             tqdm.write(f"{TAG}: number of batches = {num_batches}, avg_batch_acc = {avg_batch_acc:.2%}, avg_batch_loss = {avg_batch_loss}")
@@ -244,7 +244,7 @@ def main(args):
     # CHECK_PT: all epochs process complete
     # input(f"\n=> all epochs process complete, press Enter to continue")
     
-    # DO: clean GPU cache
+    # DO: release GPU cache
     if args.device != "cpu":
         torch.cuda.empty_cache()
         print("torch.cuda.empty_cache()")
