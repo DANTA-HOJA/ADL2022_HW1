@@ -52,12 +52,12 @@ def main(args):
     model.load_state_dict(training_info['model_state_dict']) # load model 
     model = model.to(device) # send model to device
     print(f"{model}\n")
-    print(f"batch_size = {batch_size}\n")
+    print(f"batch_size = {batch_size}")
     print(f"hidden_size = {hidden_size}")
     print(f"num_layers = {num_layers}")
     print(f"dropout = {dropout}")
     print(f"bidirectional = {bidirectional}")
-    print(f"num_classes = {num_classes}")
+    print(f"num_classes = {num_classes}\n")
     
     # 5. load loggers
     Epoch_loss_logger = {'train': training_info['trian_loss'], 'eval': training_info['eval_loss']}
