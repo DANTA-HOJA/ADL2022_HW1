@@ -97,7 +97,7 @@ def parse_args() -> Namespace:
         "--ckpt_path",
         type=Path,
         help="Path to model checkpoint. (file_extension = .ckpt)",
-        default="./ckpt/intent/LSTM_best_weight.ckpt"
+        required=True
     )
     parser.add_argument(
         "--device", type=torch.device, help="cpu, cuda, cuda:{device_num}, e.g.cuda:0", default="cuda:1"
