@@ -12,3 +12,6 @@ __pycache__
 
 # csv_dir
 pred_intent_csv/
+
+#some sh test dir
+download/
