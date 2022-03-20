@@ -31,6 +31,8 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
 
 
 # RUN TRAIN：train_intent.py
+- pre-trained word-embedding file = ```glove.840B.300d.txt```
+
 - Training file **default** directory：
 
   - data directory → ```./data/intent/```（2 files dependencies：```train.json```, ```eval.json```）
@@ -47,7 +49,7 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
 
       python3 train_intent.py --batch_size 128 --hidden_size 768 --num_epoch 30
 
-- **args** can be adjusted in **train_intent.py** (default are list below)：
+- **args** can be adjusted in **train_intent.py** (default values are list below)：
   ```
     # data
     ☆ --max_len = 128
