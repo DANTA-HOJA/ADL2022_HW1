@@ -76,6 +76,7 @@ def main(args):
     plt.plot(Epoch_loss_logger['eval'], label="eval")
     plt.legend()
     plt.savefig("epoch_Loss_logger.png")
+    plt.close()
     # 2. accuracy graph
     plt.figure("Epoch_acc")
     plt.title("Epoch_acc")
@@ -83,6 +84,7 @@ def main(args):
     plt.plot(Epoch_acc_logger['eval'], label="eval")
     plt.legend()
     plt.savefig("epoch_Acc_logger.png")
+    plt.close()
     
     # DO: clean GPU cache
     if args.device != "cpu":
