@@ -6,7 +6,16 @@
 - Change all **"python3"** back to **"python"** in all **.sh** file in folder.
 
 
-# LSTM Model summary, @batch_size=256 
+# Colab: Using "glove.840B.300d"
+1.　Download：
+
+    !wget http://nlp.stanford.edu/data/glove.840B.300d.zip
+2.　Unzip：
+
+    unzip glove.840B.300d.zip
+
+
+# LSTM Model summary, @ batch_size=256 
     h_0.shape = torch.Size([4, 256, 512])
     after embedding_layer, embedding_layer.shape = torch.Size([256, 128, 300])
     after rnn, h_n.shape = torch.Size([4, 256, 512])
@@ -15,23 +24,37 @@
     after softmax, output.shape = torch.Size([256, 150])
 
 
-# RUN TRAIN
-
-    python3 train_intent.py --batch_size #(default=256) --hidden_size #(default=512)
-
 # RUN TEST
     python3 test_intent.py --test_file ./data/intent/test.json
 
 output_file (default setting)：**[location = "."]**,　**[file_name = "pred_intent.csv"]**
 
 
-# Colab: Using "glove.840B.300d"
-1.　Download：
+# RUN TRAIN
 
-    !wget http://nlp.stanford.edu/data/glove.840B.300d.zip
-2.　Unzip：
+    python3 train_intent.py --batch_size #(default=256) --hidden_size #(default=512)
 
-    unzip glove.840B.300d.zip
+- **args** can be adjusted in **train_intent.py** (default are list below)：
+  ```
+    # data
+    ☆ --max_len = 128
+
+    # model
+    ☆ --hidden_size = 512
+    ☆ --num_layers = 2
+    ☆ --dropout = 0.1
+    ☆ --bidirectional = True
+    
+    # optimizer
+    ☆ --lr = 1e-3
+
+    # dataloader
+    ☆ --batch_size = 256
+
+    # training
+    ☆ --device = cuda:1
+    ☆ --num_epoch = 30
+  ```
 
 
 # Result
@@ -43,8 +66,8 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
 
   - model information & performance：***LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt***
     ```
-    - batch_size = **64**
-    - hidden_size = 768
+    - batch_size = (64)
+    - hidden_size = (768)
     - num_layers = 2
     - dropout = 0.1
     - bidirectional = True
@@ -62,9 +85,10 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
         python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
         python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
   - model information & performance：***LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt***
+    - catch by **()** means different from default mentioned in **RUN TRAIN** 
     ```
-    - batch_size = **128**
-    - hidden_size = 768
+    - batch_size = (128)
+    - hidden_size = (768)
     - num_layers = 2
     - dropout = 0.1
     - bidirectional = True
