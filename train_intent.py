@@ -226,18 +226,20 @@ def main(args):
         tqdm.write("") # write empty new_line
         tqdm.write("="*100)
         
-        
-        # DO: plot and save "Epoch_loss" graph
+        # DO: draw and save graph
+        # 1. loss graph
         plt.figure("Epoch_loss")
-        plt.plot(Epoch_loss_logger['train'])
-        plt.plot(Epoch_loss_logger['eval'])
-        plt.legend(['train', 'eval'])
+        plt.title("Epoch_loss")
+        plt.plot(Epoch_loss_logger['train'], label="train")
+        plt.plot(Epoch_loss_logger['eval'], label="eval")
+        plt.legend()
         plt.savefig("epoch_Loss_logger.png")
-        # DO: plot and save "Epoch_acc" graph
+        # 2. accuracy graph
         plt.figure("Epoch_acc")
-        plt.plot(Epoch_acc_logger['train'])
-        plt.plot(Epoch_acc_logger['eval'])
-        plt.legend(['train', 'eval'])
+        plt.title("Epoch_acc")
+        plt.plot(Epoch_acc_logger['train'], label="train")
+        plt.plot(Epoch_acc_logger['eval'], label="eval")
+        plt.legend()
         plt.savefig("epoch_Acc_logger.png")
         
         # CHECK_PT: one epoch process complete

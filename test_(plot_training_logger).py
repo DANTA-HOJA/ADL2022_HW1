@@ -68,20 +68,20 @@ def main(args):
     print(f"best_avg_acc = {training_info['best_avg_acc']:.2%}")
     print(f"best_avg_loss = {training_info['best_avg_loss']}")
 
-    # DO: draw and save graph
+   # DO: draw and save graph
     # 1. loss graph
     plt.figure("Epoch_loss")
-    plt.plot(Epoch_loss_logger['train'])
-    plt.plot(Epoch_loss_logger['eval'])
-    plt.legend(['train', 'eval'])
-    plt.title('loss')
+    plt.title("Epoch_loss")
+    plt.plot(Epoch_loss_logger['train'], label="train")
+    plt.plot(Epoch_loss_logger['eval'], label="eval")
+    plt.legend()
     plt.savefig("epoch_Loss_logger.png")
     # 2. accuracy graph
     plt.figure("Epoch_acc")
-    plt.plot(Epoch_acc_logger['train'])
-    plt.plot(Epoch_acc_logger['eval'])
-    plt.legend(['train', 'eval'])
-    plt.title('accuracy')
+    plt.title("Epoch_acc")
+    plt.plot(Epoch_acc_logger['train'], label="train")
+    plt.plot(Epoch_acc_logger['eval'], label="eval")
+    plt.legend()
     plt.savefig("epoch_Acc_logger.png")
     
     # DO: clean GPU cache
