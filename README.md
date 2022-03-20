@@ -38,18 +38,37 @@ output_file (default setting) : ___[location = "."],　[file_name="pred_intent.c
 - origin：
 
         python3 train_intent.py --batch_size 64 --hidden_size 768
-        python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(h_size768)_(b_size64)_(5_epoch).ckpt"
-        python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(h_size768)_(b_size64)_(5_epoch).ckpt"
+        python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
+        python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
 
-  - model information & performance：***LSTM_best_weight_(h_size768)_(b_size64)_(5_epoch).ckpt***
+  - model information & performance：***LSTM_best_weight_(b_size64)_(h_size768)_(epoch5).ckpt***
     ```
+    - batch_size = **64**
     - hidden_size = 768
     - num_layers = 2
     - dropout = 0.1
     - bidirectional = True
     - num_classes = 150
+    
     - best_result @ epoch 5 (5 in 1:100):
     - best_avg_acc = 88.87%
     - best_avg_loss = 0.4735032820955236
     ```
 - improve：
+
+        python3 train_intent.py --batch_size 128 --hidden_size 768
+        python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
+        python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
+  - model information & performance：***LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt***
+    ```
+    - batch_size = **128**
+    - hidden_size = 768
+    - num_layers = 2
+    - dropout = 0.1
+    - bidirectional = True
+    - num_classes = 150
+
+    - best_result @ epoch 11 (11 in 1:100):
+    - best_avg_acc = 90.38%
+    - best_avg_loss = 0.4650507140904665
+    ```
