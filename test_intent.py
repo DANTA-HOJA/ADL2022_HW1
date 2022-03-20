@@ -185,7 +185,7 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--test_file",
         type=Path,
-        help="Path to the test file.",
+        help="Path to the test file. (file_extension = .json)",
         required=True
     )
     parser.add_argument(
@@ -197,10 +197,15 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--ckpt_path",
         type=Path,
-        help="Path to model checkpoint. (file_extension = .ckpt)",
-        default="./ckpt/intent/LSTM_best_weight.ckpt"
+        help="Path to load model_checkpoint. (file_extension = .ckpt)",
+        required=True
     )
-    parser.add_argument("--pred_file", type=Path, default="./pred_intent.csv")
+    parser.add_argument(
+        "--pred_file", 
+        type=Path, 
+        help="Path to save predict intent. (file_extension = .csv)",
+        default="./pred_intent.csv"
+    )
 
     # data
     parser.add_argument("--max_len", type=int, default=128)

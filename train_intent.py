@@ -259,7 +259,7 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--data_dir",
         type=Path,
-        help="Directory to the dataset.",
+        help="Directory to the dataset. (file_extension = .json)",
         default="./data/intent/",
     )
     parser.add_argument(
@@ -271,7 +271,7 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--ckpt_dir",
         type=Path,
-        help="Directory to save the model file.",
+        help="Directory to save the model_checkpoint file. (file_extension = .ckpt)",
         default="./ckpt/intent/",
     )
 
