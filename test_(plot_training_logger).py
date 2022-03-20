@@ -38,12 +38,12 @@ def main(args):
     embeddings = torch.load("./cache/intent/embeddings.pt")
     embeddings = embeddings.to(device)
     # 3. load "model parameters"
+    batch_size = training_info["batch_size"]
     hidden_size = training_info["model_para"]["hidden_size"]
     num_layers = training_info["model_para"]["num_layers"]
     dropout = training_info["model_para"]["dropout"]
     bidirectional = training_info["model_para"]["bidirectional"]
     num_classes = training_info["model_para"]["num_classes"]
-    batch_size = training_info["batch_size"]
     # 4. initialize same model structure store in ckpt file
     # ==> because we only save model gradient (using "model.state_dict()") not whole "model info(include "model structure")"
     model = IntentCls_LSTM(embeddings=embeddings, hidden_size=hidden_size, num_layers=num_layers,
@@ -52,12 +52,13 @@ def main(args):
     model.load_state_dict(training_info['model_state_dict']) # load model 
     model = model.to(device) # send model to device
     print(f"{model}\n")
+    print(f"batch_size = {batch_size}\n")
     print(f"hidden_size = {hidden_size}")
     print(f"num_layers = {num_layers}")
     print(f"dropout = {dropout}")
     print(f"bidirectional = {bidirectional}")
     print(f"num_classes = {num_classes}")
-    print(f"batch_size = {batch_size}\n")
+    
     # 5. load loggers
     Epoch_loss_logger = {'train': training_info['trian_loss'], 'eval': training_info['eval_loss']}
     Epoch_acc_logger = {'train': training_info['trian_acc'], 'eval': training_info['eval_acc']}
