@@ -27,8 +27,8 @@
 # RUN TEST
 - Using **python3**：
 
-      python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path [path_to_.ckpt_file] --(optional)pred_file [path_to_save_predict_file(.csv)]
-    - output_file (default)：```./pred_intent.csv```
+      python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path [path_to_.ckpt_file] --(optional)pred_file [path_to_save_predict(.csv)]
+    - pred_file (default)：```./pred_intent.csv```
 - Using **bash**：
 
       bash intent_cls.sh ./data/intent/test.json ./pred_intent.csv
@@ -37,7 +37,7 @@
 
 
 # RUN TRAIN：train_intent.py
-- pre-trained word-embedding file = ```glove.840B.300d.txt```
+- pre-trained word-embedding file：```glove.840B.300d.txt```
 
 - Training file **default** directory：
 
