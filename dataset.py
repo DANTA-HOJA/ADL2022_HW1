@@ -1,4 +1,4 @@
-from importlib.resources import path
+from pathlib import Path
 from typing import List, Dict
 import json
 import copy
@@ -13,7 +13,7 @@ from utils import Vocab
 class IntentClsDataset(Dataset):
     def __init__(
         self,
-        data_path: path, # data_path = .json file include {'text':str, 'intent':str, 'id':str}
+        data_path: Path, # data_path = .json file include {'text':str, 'intent':str, 'id':str}
         vocab: Vocab, # vocab = Vocab(common_words)：幫common_words編號
         label2idx: Dict[str, int], # preprocess 產生的 intent_to_index 檔案的內容 => inten2idx.json
         max_len: int, # 句子最大長度
