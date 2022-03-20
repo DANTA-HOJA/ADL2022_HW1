@@ -41,7 +41,7 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
         python3 "test_(plot_training_logger).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
         python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
 
-  - model information & performance：***LSTM_best_weight_(b_size64)_(h_size768)_(epoch5).ckpt***
+  - model information & performance：***LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt***
     ```
     - batch_size = **64**
     - hidden_size = 768
