@@ -22,7 +22,7 @@
 # RUN TEST
     python3 test_intent.py --test_file ./data/intent/test.json
 
-output_file (default setting) : ___[location = "."],　[file_name="pred_intent.csv"]___
+output_file (default setting)：**[location = "."]**,　**[file_name = "pred_intent.csv"]**
 
 
 # Colab: Using "glove.840B.300d"
@@ -34,7 +34,7 @@ output_file (default setting) : ___[location = "."],　[file_name="pred_intent.c
     unzip glove.840B.300d.zip
 
 
-# TESTING
+# Result
 - origin：
 
         python3 train_intent.py --batch_size 64 --hidden_size 768
@@ -53,6 +53,8 @@ output_file (default setting) : ___[location = "."],　[file_name="pred_intent.c
     - best_result @ epoch 5 (5 in 1:100):
     - best_avg_acc = 88.87%
     - best_avg_loss = 0.4735032820955236
+    
+    - ==> kaggle = 88.000%
     ```
 - improve：
 
