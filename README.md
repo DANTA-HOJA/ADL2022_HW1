@@ -32,7 +32,7 @@
 - Using **bash**：
 
       bash intent_cls.sh ./data/intent/test.json ./pred_intent.csv
-
+    - model using：```LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt```
 
 
 
