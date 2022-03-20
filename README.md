@@ -65,9 +65,9 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
 # Result
 - origin：
 
-        python3 train_intent.py --batch_size 64 --hidden_size 768
-        python3 "Training_plotter_(IntentCls_LSTM).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
-        python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
+      python3 train_intent.py --batch_size 64 --hidden_size 768
+      python3 "Training_plotter_(IntentCls_LSTM).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
+      python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt"
 
   - model information & performance：```LSTM_best_weight_(b_size64)_(h_size768)_(5_epoch_complete).ckpt```
     - catch by **()** means different from default mentioned in content：**RUN TRAIN** 
@@ -87,9 +87,9 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
     ```
 - improve：
 
-        python3 train_intent.py --batch_size 128 --hidden_size 768
-        python3 "Training_plotter_(IntentCls_LSTM).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
-        python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
+      python3 train_intent.py --batch_size 128 --hidden_size 768
+      python3 "Training_plotter_(IntentCls_LSTM).py" --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
+      python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path "./ckpt/intent/LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt"
   - model information & performance：```LSTM_best_weight_(b_size128)_(h_size768)_(11_epoch_complete).ckpt```
     - catch by **()** means different from default mentioned in content：**RUN TRAIN**
     ```
