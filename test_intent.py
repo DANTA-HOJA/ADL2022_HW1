@@ -82,7 +82,7 @@ def main(args):
     embeddings = torch.load("./cache/intent/embeddings.pt")
     embeddings = embeddings.to(device)
     # 3. load "model parameters"
-    batch_size = training_info["batch_size"]
+    #batch_size = training_info["batch_size"]
     hidden_size = training_info["model_para"]["hidden_size"]
     num_layers = training_info["model_para"]["num_layers"]
     dropout = training_info["model_para"]["dropout"]
@@ -96,7 +96,7 @@ def main(args):
     model.load_state_dict(training_info['model_state_dict']) # load model 
     model = model.to(device) # send model to device
     print(f"{model}\n")
-    print(f"batch_size = {batch_size}")
+    #print(f"batch_size = {batch_size}")
     print(f"hidden_size = {hidden_size}")
     print(f"num_layers = {num_layers}")
     print(f"dropout = {dropout}")
