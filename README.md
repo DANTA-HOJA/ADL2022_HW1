@@ -37,7 +37,13 @@
 
 
 # RUN TRAIN：train_intent.py
-- pre-trained word-embedding file：```glove.840B.300d.txt```
+- To train, please prepare the file list below：
+    
+  - ```glove.840B.300d.txt``` ---> pre-trained **word embedding** file
+
+  - ```train.json```, ```eval.json``` ---> **train** and **eval** dataset
+
+  - ```embeddings.pt```, ```intent2idx.json```, ```vocab.pkl``` ---> file generated after running **preprocess.sh**
 
 - Training file **default** directory：
 
@@ -45,7 +51,7 @@
 
   - preprocess.sh generated directory and files → ```./cache/intent/```（3 files dependencies：```embeddings.pt```, ```intent2idx.json```, ```vocab.pkl```）
 
-  - model_checkpoint save directory → ```./ckpt/intent/```（n files dependencies：train one time will get one ```.ckpt``` file）
+  - model_checkpoint save directory → ```./ckpt/intent/```（train one time will get one ```.ckpt``` file）
 
 - To reproduce **intent_cls**, kaggle_accuracy = **88.000%**：
 
