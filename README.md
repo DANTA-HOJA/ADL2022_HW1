@@ -33,11 +33,11 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
 # RUN TRAIN：train_intent.py
 - Training file **default** directory：
 
-  1. data directory => "./data/intent/" (2 files dependencies → train.json, eval.json)
+  1. data directory => "./data/intent/"（2 files dependencies → train.json, eval.json）
 
-  2. preprocess.sh generated directory and files => "./cache/intent/" (3 files dependencies → embeddings.pt, intent2idx.json, vocab.pkl)
+  2. preprocess.sh generated directory and files => "./cache/intent/"（3 files dependencies → embeddings.pt, intent2idx.json, vocab.pkl）
 
-  3. model_checkpoint save directory => "./ckpt/intent/" (n files dependencies → train one time will get one .ckpt file)
+  3. model_checkpoint save directory => "./ckpt/intent/"（n files dependencies → train one time will get one .ckpt file）
 
 - To reproduce **intent_cls**, kaggle_accuracy = **88.000%**：
 
