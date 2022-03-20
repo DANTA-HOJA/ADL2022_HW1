@@ -25,9 +25,15 @@
 
 
 # RUN TEST
-    python3 test_intent.py --test_file ./data/intent/test.json
+- Using **python3**：
 
-output_file (default setting)：**[location = "."]**,　**[file_name = "pred_intent.csv"]**
+      python3 test_intent.py --test_file ./data/intent/test.json --ckpt_path [path_to_.ckpt_file] --(optional)pred_file [path_to_save_predict_file(.csv)]
+    - output_file (default)：```./pred_intent.csv```
+- Using **bash**：
+
+      bash intent_cls.sh ./data/intent/test.json ./pred_intent.csv
+
+
 
 
 # RUN TRAIN：train_intent.py
