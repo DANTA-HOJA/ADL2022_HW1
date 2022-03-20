@@ -1,7 +1,9 @@
 # ADL2022_HW1
 110.2 CSIE5431_深度學習之應用（ADL）
 
-Change "python3" back to "python" in preprocess.sh file.
+
+# ---Warning--- 
+- Change all **"python3"** back to **"python"** in all **.sh** file in folder.
 
 
 # LSTM Model summary, @batch_size=256 
@@ -50,4 +52,4 @@ output_file (default setting) : ___[location = "."],　[file_name="pred_intent.c
     - best_avg_acc = 88.87%
     - best_avg_loss = 0.4735032820955236
     ```
-improve：
+- improve：
