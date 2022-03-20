@@ -73,4 +73,6 @@ output_file (default setting)：**[location = "."]**,　**[file_name = "pred_int
     - best_result @ epoch 11 (11 in 1:100):
     - best_avg_acc = 90.38%
     - best_avg_loss = 0.4650507140904665
+
+    - ==> kaggle = 89.466%
     ```
