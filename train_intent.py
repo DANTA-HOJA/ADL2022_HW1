@@ -292,7 +292,7 @@ def parse_args() -> Namespace:
     parser.add_argument(
         "--device", type=str, help="cpu, cuda, cuda:{device_num}, e.g.cuda:0", default="cuda:1"
     )
-    parser.add_argument("--num_epoch", type=int, default=100)
+    parser.add_argument("--num_epoch", type=int, default=30)
 
     args = parser.parse_args()
     return args
