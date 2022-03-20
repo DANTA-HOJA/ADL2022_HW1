@@ -73,7 +73,7 @@ def main(args):
         torch.cuda.empty_cache() 
         print("torch.cuda.empty_cache()")
     # CHECK_PT: device setting complete
-    input("\n=> device setting complete, press Enter to continue") 
+    # input("\n=> device setting complete, press Enter to continue") 
     
     # DO: load embedding
     embeddings = torch.load(args.cache_dir / "embeddings.pt")
@@ -254,7 +254,7 @@ def main(args):
         torch.cuda.empty_cache()
         print("torch.cuda.empty_cache()")
     # CHECK_PT: release GPU cache complete
-    input(f"\n=> release GPU cache complete, press Enter to continue")
+    # input(f"\n=> release GPU cache complete, press Enter to continue")
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
