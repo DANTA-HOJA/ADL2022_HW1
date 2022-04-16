@@ -5,6 +5,9 @@
 # ---Warning--- 
 - Change all **"python3"** back to **"python"** in all **.sh** file in folder.
 
+# Environment
+- Python 3.8
+- PyTorch 1.7.1
 
 # Colab: Using "glove.840B.300d"
 1.　Download：
